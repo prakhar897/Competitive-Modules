@@ -1,0 +1,15 @@
+Deault Node:
+
+	class Node implements Comparable<Node>{
+	    int id;
+	    int data;
+	    public Node(int id,int data){
+	        this.id=id;
+	        this.data=data;
+	    }
+
+	    @Override
+	    public int compareTo(Node o){
+	    return Integer.compare(o.value,value);
+	    }
+	}

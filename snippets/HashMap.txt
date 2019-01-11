@@ -1,0 +1,13 @@
+Iterations :
+	Iterator it = hm.entrySet().iterator();
+    while (it.hasNext()) {
+    Map.Entry p = (Map.Entry)it.next();
+    System.out.println(p.getKey() + " = " + p.getValue());
+    it.remove();
+
+    Collections.sort(words, new Comparator<Pair<String, Integer>>() {
+    @Override
+    public int compare(final Pair<String, Integer> o1, final Pair<String, Integer> o2) {
+        // TODO: implement your logic here
+    }
+});
