@@ -1,14 +1,22 @@
-package DS;
+package Library.Algorithms;
 
 import java.io.*;
 import java.util.*;
- class Node {
+
+public class DisjointSet {
+
+	class Node {
         long data;
         Node parent;
         int rank;
     }
 
-public class DisjointSet {
+    public DisjointSet(int p,int n){
+	    for(int i=p;i<=n;i++)
+        {
+            makeSet(i);
+        }
+    }
 
     private Map<Long, Node> map = new HashMap<>();
 
@@ -43,6 +51,10 @@ public class DisjointSet {
         return findSet(map.get(data));
     }
 
+    public long findParent(long data){
+        return findSet(data).data;
+    }
+
     private Node findSet(Node node) {
         Node parent = node.parent;
         if (parent == node) {
@@ -53,34 +65,4 @@ public class DisjointSet {
     }
 
 }
-
-/*class Solution {
-
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int q = in.nextInt();
-        DisjointSet ds = new DisjointSet();
-        int i;
-        for(i=1;i<=n;i++)
-            ds.makeSet(i);
-        for(i=0;i<q;i++)
-        {
-            String c = in.next();
-            if(c.charAt(0) == 'M')
-            {
-                long d1 = in.nextLong();
-                long d2 = in.nextLong();
-                ds.union(d1,d2);
-            }
-            else
-            {
-                long d1 = in.nextLong();
-                Node a = ds.findSet(d1);
-                System.out.println(a.rank);
-            }
-        }
-            
-    }
-}*/
 
