@@ -1,58 +1,48 @@
-package Library.Data_Structures;
-
-import FastIO.InputReader;
-import FastIO.OutputWriter;
-
-public class Pair<A, B> {
-    A first;
-    B second;
-
-    public Pair(A first, B second) {
-        super();
-        this.first = first;
-        this.second = second;
+class Pair implements Comparable
+{
+    int f;
+    int s;
+    Pair(int fi,int se)
+    {
+        f=fi;
+        s=se;
     }
-
-    public int hashCode() {
-        int hashFirst = first != null ? first.hashCode() : 0;
-        int hashSecond = second != null ? second.hashCode() : 0;
-
-        return (hashFirst + hashSecond) * hashSecond + hashFirst;
-    }
-
-    public boolean equals(Object other) {
-        if (other instanceof Pair) {
-            Pair otherPair = (Pair) other;
-            return
-                    ((  this.first == otherPair.first ||
-                            ( this.first != null && otherPair.first != null &&
-                                    this.first.equals(otherPair.first))) &&
-                            (  this.second == otherPair.second ||
-                                    ( this.second != null && otherPair.second != null &&
-                                            this.second.equals(otherPair.second))) );
+    public int compareTo(Object o)
+    {
+        Pair pr=(Pair)o;
+        if(s>pr.s)
+            return 1;
+        if(s==pr.s)
+        {
+            if(f>pr.f)
+                return 1;
+            else
+                return -1;
         }
-
+        else
+            return -1;
+    }
+    public boolean equals(Object o)
+    {
+        Pair ob=(Pair)o;
+        int ff;
+        int ss;
+        if(o!=null)
+        {
+            ff=ob.f;
+            ss=ob.s;
+            if((ff==this.f)&&(ss==this.s))
+                return true;
+        }
         return false;
+    }
+    public int hashCode()
+    {
+        return (this.f+" "+this.s).hashCode();
     }
 
     public String toString()
     {
-        return "(" + first + ", " + second + ")";
-    }
-
-    public A getFirst() {
-        return first;
-    }
-
-    public void setFirst(A first) {
-        this.first = first;
-    }
-
-    public B getSecond() {
-        return second;
-    }
-
-    public void setSecond(B second) {
-        this.second = second;
+    	return this.f+" "+this.s;
     }
 }

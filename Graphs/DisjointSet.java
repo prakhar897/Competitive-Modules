@@ -5,19 +5,6 @@ import java.util.*;
 
 public class DisjointSet {
 
-	class Node {
-        long data;
-        Node parent;
-        int rank;
-    }
-
-    public DisjointSet(int p,int n){
-	    for(int i=p;i<=n;i++)
-        {
-            makeSet(i);
-        }
-    }
-
     private Map<Long, Node> map = new HashMap<>();
 
     public void makeSet(long data) {
@@ -51,10 +38,6 @@ public class DisjointSet {
         return findSet(map.get(data));
     }
 
-    public long findParent(long data){
-        return findSet(data).data;
-    }
-
     private Node findSet(Node node) {
         Node parent = node.parent;
         if (parent == node) {
@@ -64,5 +47,11 @@ public class DisjointSet {
         return node.parent;
     }
 
+}
+
+class Node {
+    long data;
+    Node parent;
+    int rank;
 }
 
